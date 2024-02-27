@@ -3,15 +3,21 @@ import Feedback from "../Feedback/Feedback";
 import Notification from "../Notification/Notification";
 import Options from "../Options/Options";
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
-  // Тут використовуй сеттер, щоб оновити стан
-  const [clicks, setClicks] = useState({
-    good: 0,
-    neutral: 0,
-    bad: 0,
+  const [clicks, setClicks] = useState(() => {
+    const savedFeedback = window.localStorage.getItem("saved-feedback");
+    if (savedFeedback !== null) {
+      return JSON.parse(savedFeedback);
+    }
+    return { good: 0, neutral: 0, bad: 0 };
   });
+
+  useEffect(() => {
+    window.localStorage.setItem("saved-feedback", JSON.stringify(clicks));
+  });
+
   const updateFeedback = (feedbackType) => {
     setClicks((clicks) => ({
       ...clicks,
@@ -45,7 +51,6 @@ function App() {
           neutral={clicks.neutral}
           bad={clicks.bad}
           total={totalFeedback}
-          totalFeedback={totalFeedback}
         />
       )}
     </>

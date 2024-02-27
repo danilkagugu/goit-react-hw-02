@@ -1,0 +1,32 @@
+.btnBox {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.btnList {
+  background-color: #68bdee;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  min-height: 30px;
+  min-width: 120px;
+  cursor: pointer;
+}
+
+.btnDelete {
+  background-color: #fa7474;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  min-height: 30px;
+  min-width: 120px;
+  cursor: pointer;
+}
+
+.btnList:hover,
+.btnDelete:hover {
+  transform: scale(1.05) rotate(-1deg);
+}
