@@ -16,7 +16,7 @@ function App() {
 
   useEffect(() => {
     window.localStorage.setItem("saved-feedback", JSON.stringify(clicks));
-  });
+  }, [clicks]);
 
   const updateFeedback = (feedbackType) => {
     setClicks((clicks) => ({
